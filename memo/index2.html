@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dokdo&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>나홀로 메모장</title>
+    <style>
+      .content {
+        width: 900px;
+        margin: auto;
+        font-family: "Dokdo", cursive;
+      }
+      .input-box {
+        width: 500px;
+        margin: auto;
+        margin-bottom: 30px;
+        border: 3px solid black;
+        padding: 20px;
+        border-radius: 5px;
+      }
+
+      .input-box .button_area {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="top">
+        <div class="jumbotron">
+          <h1 class="display-4">나홀로 링크 메모장!</h1>
+          <p class="lead">
+            중요한 링크를 저장해두고, 나중에 볼 수 있는 공간입니다
+          </p>
+          <hr class="my-4" />
+          <a
+            id="posting_button"
+            class="btn btn-primary btn-lg"
+            href="#"
+            role="button"
+            onclick="onToggle()"
+            >포스팅박스 열기</a
+          >
+        </div>
+      </div>
+      <div class="input-box" id="input-box">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">아티클 URL</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">간단 코멘트</label>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="button_area">
+            <button type="submit" class="btn btn-primary">기사저장</button>
+          </div>
+        </form>
+      </div>
+      <div class="body">
+        <div id="card_content" class="card-columns"></div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $("#input-box").hide();
+
+      function make_card() {
+        let card = `
+          <div class="card">
+            <img
+              src="https://pds.joins.com/news/component/htmlphoto_mmdata/201910/26/ce877ed2-0800-457f-b9a6-a86044718d40.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">여기 기사 제목이 들어가죠</h5>
+              <p class="card-text">
+                기사의 요약 내용이 들어갑니다. 동해물과 백두산이 마르고 닳도록
+                하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산...
+              </p>
+              <p class="card-text">
+                <small class="text-muted"
+                  >Last 여기에 코멘트가 들어갑니다.
+                </small>
+              </p>
+            </div>
+          </div>
+        `;
+        $("#card_content").append(card);
+      }
+
+      for (let i = 0; i < 9; i++) {
+        make_card();
+      }
+
+      function onToggle() {
+        if ($("#input-box").css("display") == "none") {
+          $("#input-box").show();
+          $("#posting_button").text("포스팅박스 닫기");
+        } else {
+          $("#input-box").hide();
+          $("#posting_button").text("포스팅박스 열기");
+        }
+      }
+    </script>
+  </body>
+</html>
